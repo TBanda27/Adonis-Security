@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome CSS for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .container {
+            max-width: 400px; /* Adjust max-width to your preference */
+            margin: auto; /* Center align */
+        }
+        .form-container {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .form-control {
+            height: calc(1.5em + .75rem + 2px); /* Adjust height of input */
+        }
+        .btn-facebook {
+            background-color: #3b5998; /* Facebook blue */
+            color: white;
+            border-color: #3b5998;
+        }
+        .btn-google {
+            background-color: #db4437; /* Google red */
+            color: white;
+            border-color: #db4437;
+        }
+        .btn-facebook i, .btn-google i {
+            font-size: 18px; /* Adjust icon size */
+        }
+        .link-style {
+            color: #007bff; /* Bootstrap's default link color */
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .link-style:hover {
+            color: #0056b3; /* Bootstrap's link color on hover */
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center mt-4">User Registration</h2>
+
+    <div class="form-container">
+        <!-- Registration form -->
+        <form th:action="@{/register}" method="post">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" th:field="*{firstName}" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" th:field="*{lastName}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" th:field="*{email}" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" th:field="*{password}" required>
+            </div>
+<!--            <div class="form-group">-->
+<!--                <label for="role">Role:</label>-->
+<!--                <select class="form-control" id="role" name="role" th:field="*{role}">-->
+<!--                    <option value="USER">User</option>-->
+<!--                    <option value="ADMIN">Admin</option>-->
+<!--                </select>-->
+<!--            </div>-->
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </form>
+    </div>
+
+    <!-- Facebook Login Button -->
+    <div class="text-center">
+        <a th:href="@{/login/facebook}" class="btn btn-facebook">
+            <i class="fab fa-facebook-f mr-2"></i> Register with Facebook
+        </a>
+    </div>
+
+    <!-- Google Login Button -->
+    <div class="text-center mt-3">
+        <a th:href="@{/login/google}" class="btn btn-google">
+            <i class="fab fa-google mr-2"></i> Register with Google
+        </a>
+    </div>
+
+    <!-- Redirect to login page if already registered -->
+    <p class="text-center mt-4">If you are already registered, <a th:href="@{/login}" class="link-style">click here</a> to login.</p>
+</div>
+
+<!-- Bootstrap JS and dependencies (optional, for components like tooltips) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- FontAwesome JS for icons (optional, if using FontAwesome icons) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</body>
+</html>
